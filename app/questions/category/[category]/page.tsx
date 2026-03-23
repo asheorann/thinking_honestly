@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { getAllCategories, getQuestionsByCategory } from "@/lib/mdx";
 import QuestionCard from "@/components/QuestionCard";
 
-const validCategories = ["mind", "cosmos", "society", "language", "mathematics", "misc"];
+const validCategories = ["mind", "cosmos", "society", "language", "mathematics", "finance", "misc"];
 
 export async function generateStaticParams() {
   const categories = getAllCategories();

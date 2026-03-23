@@ -9,7 +9,7 @@ export interface QuestionFrontmatter {
   date: string;
   updated?: string;
   tags: string[];
-  category: "mind" | "cosmos" | "society" | "language" | "mathematics" | "misc";
+  category: "mind" | "cosmos" | "society" | "language" | "mathematics" | "finance" | "misc";
   language: "en" | "hi";
   status: "open" | "closed";
   revision: number;
