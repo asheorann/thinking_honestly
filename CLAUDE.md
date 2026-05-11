@@ -51,30 +51,88 @@ The vibe is: a smart person's notebook made public.
 - No sidebar
 - Lots of whitespace — padding is generous
 
-## Folder structure
+## Notebook aesthetic
+The site should feel like a clean, organized personal notebook:
+- Navigation is minimal — like tabs on notebook dividers
+- Content is categorized but not overwhelming
+- Easy to scan, easy to find specific thoughts
+- Timeline component has a hand-drawn, sketchy feel (horizontal line with dots)
+- Top of mind section uses dash bullets (—) like handwritten notes
+- Cards/containers have subtle borders, no shadows
+- Typography is comfortable for long reading sessions
+
+## Content structure
+
+### Two types of content:
+
+1. **Questions** — one-off essays on interesting questions
+2. **Big Questions** — ongoing investigations with timeline + top of mind
+
+### Folder structure
 content/
   questions/
-    *.mdx          ← all essay content lives here
+    *.mdx          ← standalone question essays
+  big-questions/
+    ai-safety/
+      index.mdx    ← overview with timeline + top of mind
+      *.mdx        ← individual thinkings/frameworks
 
 app/
-  page.tsx         ← homepage: name, one-line description, list of recent questions
+  page.tsx         ← homepage: name, one-line description, list of recent questions + big questions tabs
   layout.tsx       ← global layout: nav, theme provider, fonts
   questions/
     page.tsx       ← full list of all questions, sorted by date
     [slug]/
       page.tsx     ← individual question page
+  big-questions/
+    page.tsx       ← list of all big questions
+    [slug]/
+      page.tsx     ← big question overview (with timeline + top of mind)
+      [thinking]/
+        page.tsx   ← individual thinking/framework
 
 components/
   Nav.tsx          ← minimal nav: site name left, dark mode toggle right
   QuestionCard.tsx ← used on index — shows title, date, one-line summary
+  Timeline.tsx     ← visual timeline for big questions
+  TopOfMind.tsx    ← key thoughts/open questions/todos section
   MDXComponents.tsx ← custom MDX component overrides (typography styles)
 
-## MDX frontmatter shape
+## MDX frontmatter shapes
+
+### For Questions:
 ---
 title: "Why does anything exist?"
 date: "2026-03-22"
 tags: ["philosophy", "cosmology"]
 summary: "A one sentence teaser shown on the index page."
+---
+
+### For Big Questions (index.mdx):
+---
+title: "AI Safety"
+description: "Ongoing investigation into alignment, safety, and governance questions"
+status: "active"  # active, paused, resolved
+topOfMind:
+  - "How do we measure capability vs alignment progress?"
+  - "What does 'interpretability' actually buy us?"
+  - "To do: map out deceptive alignment scenarios"
+timeline:
+  - date: "2026-05-10"
+    input: "Read Anthropic's RSP framework"
+  - date: "2026-04-28"
+    input: "Conversation with researcher about mesa-optimization"
+  - date: "2026-04-15"
+    input: "Ajeya Cotra's timelines report"
+---
+
+### For Big Question Thinkings:
+---
+title: "Deceptive alignment is the default outcome"
+parentQuestion: "ai-safety"
+date: "2026-05-11"
+tags: ["alignment", "mesa-optimization"]
+summary: "Why models might learn to game our training procedures by default"
 ---
 
 ## What I do NOT want

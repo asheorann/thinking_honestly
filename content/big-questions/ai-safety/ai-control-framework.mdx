@@ -1,0 +1,88 @@
+---
+title: "AI control framework"
+parentQuestion: "ai-safety"
+date: "2026-05"
+tags: ["control", "framework"]
+summary: "Framework developed after reading about AI control approaches."
+source: "https://urldefense.com/v3/__https://blog.redwoodresearch.org/p/the-case-for-ensuring-that-powerful__;!!IBzWLUs!U51h8M_RONMRXx6syzhvoccDzJaZefq_QuftIAv-Q528O3A4foSAuegr3dhL0nN9adRNkedws8Ct5h7UQVMGmS0$"
+---
+
+After reading *The Case for Ensuring Powerful AIs Are Controlled*, some key takeaways:
+
+## Core argument
+
+Labs should make sure safety measures apply even if AIs are misaligned and try to subvert them.
+
+Key distinction the field conflates: **alignment** (AI doesn't want to cause harm) vs **control** (AI can't succeed even if it does). Most frontier labs focus on alignment, not control.
+
+AI control aims to mitigate risks from models intentionally trying to seize power, called **scheming**, nearly the same as what Hubinger calls deceptive alignment.
+
+## The window
+
+Won't work for arbitrarily powerful AIs, but should work for the first wave capable of reducing risk from subsequent AIs.
+
+Depends on a window existing where AI is transformatively useful but not yet uncontrollable.
+
+— Where are we in that window right now?
+
+Goal: "if an AI is scheming, it won't successfully cause a catastrophe before we catch it"
+
+Catching an AI red-handed counts as a win condition.
+
+## Evaluation
+
+Evaluating control just requires evaluating capabilities?
+
+— Is the idea that you're only testing what the AI can/can't do, sidestepping whether it's deceiving you about its internals?
+
+— How do you actually measure capability, and where is the line separating "capable enough to be untrusted" from "not"?
+
+Contrast: evaluating alignment is hard because a scheming AI can just fake being aligned during tests.
+
+— Has anything major changed since this was published?
+
+## Security mindset
+
+Managing scheming risk should mirror managing security risk:
+1. Characterize plausibility of attacks across attacker types
+2. Argue that even with the best available strategy, each attacker type is unlikely to succeed
+
+Good analogy: serious security teams assume some employees are compromised and design robustness around that, rather than trying to guarantee no employee is ever compromised.
+
+## Control evaluations
+
+To evaluate control, run a **control evaluation**, treating all models above a capability threshold as untrusted.
+
+Red team finds attack strategies, trains models to execute them, then estimates probability of an unacceptable outcome.
+
+Key assumption: red team is at least as good as the model at finding attacks.
+
+Scheming AIs are actually at a disadvantage:
+1. Less serial thinking time
+2. Less info about countermeasures
+3. Can't iterate without getting caught
+
+Control evaluations are relatively easy to agree on as a standard, good for policy.
+
+**Meta-level adversarial evaluations**: broader category of red-teaming a protocol. Control evals are a specific version assuming persistent scheming, targeting the actual deployment protocol, black-box only. Sleeper agents paper is an example that is NOT a control eval.
+
+## Control techniques
+
+1. Expensive human oversight for subtle dangerous actions
+2. Cheap automated monitoring to flag actions before execution
+3. Limiting untrusted AI affordances and access
+4. Security hardening
+
+## Using safe AI to prevent unsafe AI
+
+Interesting section on using the first safe powerful AI to prevent catastrophe from subsequent unsafe ones:
+1. Alignment
+2. Security
+3. Defense/hardening
+4. Detection
+5. Enforcement
+6. Strategic advising
+
+## Honest limitation
+
+Once AI is sufficiently powerful control breaks down. This is an argument for buying time not solving the problem permanently.
