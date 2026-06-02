@@ -36,7 +36,7 @@ export default function QuestionPage({ params }: { params: { slug: string } }) {
   const showUpdated = frontmatter.updated && frontmatter.updated !== frontmatter.date;
 
   return (
-    <main className="max-w-3xl mx-auto px-8 py-12">
+    <main className="max-w-5xl mx-auto px-8 py-12">
       <Link
         href="/questions"
         className="text-accent hover:underline inline-flex items-center mb-8"
@@ -99,7 +99,7 @@ export default function QuestionPage({ params }: { params: { slug: string } }) {
         </div>
 
         <div
-          className={`max-w-[65ch] text-body text-base leading-[1.8] ${
+          className={`max-w-[80ch] text-body text-base leading-[1.8] ${
             frontmatter.language === "hi" ? "font-hind" : ""
           }`}
         >
